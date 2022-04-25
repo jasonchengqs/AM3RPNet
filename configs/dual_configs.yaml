@@ -1,0 +1,43 @@
+train:
+  run:
+    timeseries_only: False
+    slice_only: False
+    resume: False
+    seed: 2022
+    data_dir: ../r3DiM_Benchmark
+    timeseries_dir: ./results/preprocess/timeseries
+    slices_dir: ./results/preprocess/voxel/slices
+    layer_measures_dir: ../r3DiM_Benchmark/LayerData
+    save_dir: ./results/train
+    target: time
+  data:
+    slices_padding: 1
+    batch_size: 1
+  timeseries:
+    ckpt: ./results/train/timeseries/time/ckpt/LSTARNet.ckpt
+  slice:
+    ckpt: ./results/train/slice/time/ckpt/ResNet18.ckpt
+  dual:
+    use_pretrained_singles: True
+    train_head_only: True
+  train:
+    max_epoch: 15
+    learning_rate: 0.00001
+    
+test:
+  run:
+    timeseries_only: True
+    slice_only: False
+    resume: False
+    seed: 2022
+    data_dir: ../r3DiM_Benchmark
+    timeseries_dir: ./results/preprocess/timeseries
+    slices_dir: ./results/preprocess/voxel/slices
+    layer_measures_dir: ../r3DiM_Benchmark/LayerData
+    save_dir: ./results/test
+    target: time
+  data:
+    slices_padding: 1
+    batch_size: 1
+  timeseries:
+    ckpt: ./results/train/timeseries/time/ckpt/LSTARNet.ckpt

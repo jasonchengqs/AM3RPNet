@@ -1,0 +1,47 @@
+train:
+  run:
+    timeseries_only: True
+    slice_only: False
+    resume: False
+    seed: 2022
+    data_dir: ../r3DiM_Benchmark
+    timeseries_dir: ./results/preprocess/timeseries
+    slices_dir: ./results/preprocess/voxel/slices
+    layer_measures_dir: ../r3DiM_Benchmark/LayerData
+    save_dir: ./results/train
+    target: time
+  data:
+    slices_padding: 1
+    batch_size: 1
+  timeseries:
+    arch: LSTARNet
+    model_params:
+      cuda: True
+      m_var: 5
+      h_cnn_short: 128
+      h_cnn_long: 256
+      h_rnn: 128
+      attn_head: 4
+      cnn_kernel: 5
+      dropout: 0.25
+  train:
+    max_epoch: 50
+    learning_rate: 0.0001
+    
+test:
+  run:
+    timeseries_only: True
+    slice_only: False
+    resume: False
+    seed: 2022
+    data_dir: ../r3DiM_Benchmark
+    timeseries_dir: ./results/preprocess/timeseries
+    slices_dir: ./results/preprocess/voxel/slices
+    layer_measures_dir: ../r3DiM_Benchmark/LayerData
+    save_dir: ./results/test
+    target: time
+  data:
+    slices_padding: 1
+    batch_size: 1
+  timeseries:
+    ckpt: ./results/train/timeseries/time/ckpt/LSTARNet.ckpt

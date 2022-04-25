@@ -1,0 +1,39 @@
+train:
+  run:
+    timeseries_only: False
+    slice_only: True
+    resume: False
+    seed: 2022
+    data_dir: ../r3DiM_Benchmark
+    timeseries_dir: ./results/preprocess/timeseries
+    slices_dir: ./results/preprocess/voxel/slices
+    layer_measures_dir: ../r3DiM_Benchmark/LayerData
+    save_dir: ./results/train
+    target: energy
+  data:
+    slices_padding: 1
+    batch_size: 64
+  slice:
+    arch: ResNet18
+    model_params: None
+  train:
+    max_epoch: 50
+    learning_rate: 0.0001
+
+test:
+  run:
+    timeseries_only: False
+    slice_only: True
+    resume: False
+    seed: 2022
+    data_dir: ../r3DiM_Benchmark
+    timeseries_dir: ./results/preprocess/timeseries
+    slices_dir: ./results/preprocess/voxel/slices
+    layer_measures_dir: ../r3DiM_Benchmark/LayerData
+    save_dir: ./results/test
+    target: time
+  data:
+    slices_padding: 1
+    batch_size: 64
+  slice:
+    ckpt: ./results/train/slice/time/ckpt/ResNet18.ckpt
