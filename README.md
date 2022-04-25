@@ -1,6 +1,5 @@
-# Predicting Layer-wise Consumption of Energy and Time in 3D Printing with Multimodal Neural Network
-
-### Proposed model: Additive Manufacturing Multi-Modality Resource Prediction Network (AM3RPNet)
+# Layer-wise Prediction of Energy and Time Usage in Additive Manufacturing with Multimodal Neural Network
+### Proposed model: Additive Manufacturing Multi-Modal Resource Prediction Network (AM3RPNet)
 
 ### Usage:
 1. Download r3dim dataset from https://www.kaggle.com/datasets/gergoszemeti/r3dim-resource-use-in-fdm-3d-printing.
